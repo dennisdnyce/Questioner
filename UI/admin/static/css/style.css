@@ -253,7 +253,10 @@ hr {
   text-decoration: none;
   text-align: center;
 }
-
+ #footing {
+     clear: both;
+     padding-bottom: 10px;
+ }
 
 .footer {
   padding: 10px;
