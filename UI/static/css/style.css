@@ -43,7 +43,16 @@ body {
   background-color: #f1f1f1;
   color: green;
   height:30px;
-  font-size: 25px;
+  font-size: 24px;
+  font-weight: bold;
+  float: right;
+}
+
+.topnav a.activitylog {
+  background-color: #f1f1f1;
+  color: green;
+  height:10px;
+  font-size: 20px;
   font-weight: bold;
   float: right;
 }
