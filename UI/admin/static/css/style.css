@@ -1,0 +1,265 @@
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f1f1f1;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 10px;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+
+.topnav a {
+  float: right;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #f1f1f1;
+  color: green;
+  height:30px;
+  font-size: 25px;
+  font-weight: bold;
+  float: left;
+}
+
+.topnav a.activity {
+  background-color: #f1f1f1;
+  color: green;
+  height:30px;
+  font-size: 24px;
+  font-weight: bold;
+  float: right;
+}
+
+.topnav a.activitylog {
+  background-color: #f1f1f1;
+  color: green;
+  height:10px;
+  font-size: 20px;
+  font-weight: bold;
+  float: right;
+}
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
+.topnav .search-contained {
+  float: left;
+}
+
+.topnav .search-contained button {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-contained button:hover {
+  background: #ccc;
+}
+
+.topnavi {
+  background-color: #e9e9e9;
+  width: 100%; /* Full width */
+  padding: 20px;
+}
+
+/* Column container */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.sidea {
+  flex: 30%;
+  background-color: #e9e9e9;
+  padding: 20px;
+}
+
+/* Main column */
+.main {
+  flex: 40%;
+  background-color: #e9e9e9;
+  padding: 20px;
+  text-align: center;
+}
+
+.sideb {
+  flex: 30%;
+  background-color: #e9e9e9;
+  padding: 20px;
+}
+
+
+.fakelink {
+  background-color: #fff;
+  width: 100%;
+  padding: 20px;
+  color: green;
+  height: 60px;
+}
+
+.fakelink a {
+  color: green;
+  text-decoration: none;
+}
+
+#meetuplink {
+    text-decoration: none;
+}
+.qfont {
+color: red;
+}
+
+.afont {
+color: blue;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.container input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+.container input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #4CAF50;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+.holder {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.left {
+  flex: 20%;
+  background-color: #e9e9e9;
+  padding: 10px;
+}
+
+/* Main column */
+.middle {
+  flex: 60%;
+  background-color: #e9e9e9;
+  padding: 10px;
+  text-align: center;
+  height:800px;
+  display: inline-block;
+}
+
+.right {
+  flex: 20%;
+  background-color: #e9e9e9;
+  padding: 10px;
+}
+
+.pagination {
+  display: inline-block;
+  margin-left: 500px;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-align: center;
+}
+
+
+.footer {
+  padding: 10px;
+  width: 100%;
+  background-color: #f1f1f1;
+  color: black;
+  text-align: center;
+  display: inline-block;
+}
