@@ -5,6 +5,11 @@ Questioner is a mock of a meetup platform where any user is allowed to register 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. Watch out for the deployment notes on how to deploy the project on a live system.
 
+###NOTE
+- The project is managed by the PivotalTracker software management platform, preview it at https://www.pivotaltracker.com/n/projects/2235504
+- The project documentation is yet to be created.
+- The Questioner app is yet to be hosted on heroku.
+
 ### Prerequisites
 The things you need to setup the project and its relevant configuration.
 
