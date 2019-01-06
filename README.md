@@ -6,14 +6,16 @@ Questioner is a mock of a meetup platform where any user is allowed to register 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. Watch out for the deployment notes on how to deploy the project on a live system.
 
 ### NOTE
-- The project is managed by the PivotalTracker software management platform, preview it at https://www.pivotaltracker.com/n/projects/2235504
+- The project is managed by the PivotalTracker software management platform, preview it at <a href="https://www.pivotaltracker.com/n/projects/2235504" target="_blank">https://www.pivotaltracker.com/n/projects/2235504</a>
 - The project documentation is yet to be created.
 - The Questioner app is yet to be hosted on heroku.
 
 ### Prerequisites
 The things you need to setup the project and its relevant configuration.
 
-- Firstly, visit the link > https://dennisdnyce.github.io/Questioner/UI for a github-pages(gh-pages) preview of its interface.
+- Firstly, visit the link <a href="https://dennisdnyce.github.io/Questioner/UI" target="_blank">https://dennisdnyce.github.io/Questioner/UI</a> for the normal user interface on gh-pages.
+
+- Secondly, visit the link <a href="https://dennisdnyce.github.io/Questioner/UI/admin" target="_blank">https://dennisdnyce.github.io/Questioner/UI/admin</a> for the admin user interface.
 
 ```
 git clone http://github.com/dennisdnyce/Questioner.git
