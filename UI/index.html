@@ -12,14 +12,14 @@
 <body>
 
     <div class="topnav">
-      <a class="active" href="home.html"> <img src="static/images/kanda.png" alt="" height="30px" width="90px"> </a>
-      <a class="active" href="home.html"> Questioner </a>
+      <a class="active" href="home.html"> <img src="static/images/kanda.png" alt="site logo" height="30px" width="50px"> </a>
+      <a class="active" href="home.html"> Home </a>
        <a class="activitylog" href="resetpassword.html"> forgot your password? </a>
       <div class="search-container">
         <form action="#">
 
-           <input type="text" placeholder="username" name="username">
-          <input type="text" placeholder="password" name="password">
+           <input type="text" placeholder="username" name="username" required>
+          <input type="text" placeholder="password" name="password" required>
 
           <button type="submit">sign-in</button>
         </form>
@@ -33,15 +33,33 @@
     <div class="row">
     <div class="sidea">
         <br />
-    <h2>Quick Links</h2>
-    <div class="fakelink"><a href="toppost.html">Top Questions</a></div><br>
-    <div class="fakelink"><a href="answerpost.html">Most Answered Questions</a></div><br>
+    <h2>Meetup Feeds</h2>
+    <p class="homefeed">
+        <a href="meetupsdetail.html">
+        <img src="static/images/kigali.jpg" height="auto" width="60%"/><br />
+        The importance of having a positive mindset
+        <p class="homefeed"><a  href="meetupsdetail.html">
+            <img src="static/images/food.jpg" height="auto" width="60%"/><br />
+            Food waste innovation in Africa
+        </a></p>
+    <p class="homefeed"><a  href="meetupsdetail.html">
+        <img src="static/images/andela.jpg" height="auto" width="60%"/><br />
+        Best way to come up with UI/UX experience the Andela way
+    </a></p>
+    <p class="homefeed"><a  href="meetupsdetail.html">
+        <img src="static/images/health.jpg" height="auto" width="60%"/><br />
+        Corporate health as a key factor for collaboration
+    </a></p>
+    </a>
+    </p>
+    <div class="moreplease"><a href="meetups.html">Other Popular Meetups</a></div>
+    <br>
     </div>
     <div class="main">
         <br /><br />
 
     <div class="fakeimg">
-        <h3>The Questions' Meetup App</h3>
+        <h1 id="logoo">Questioner</h1>
         <img src="static/images/qanda.png" height="200px" />
         <h3>Where <font class="qfont" >Questions</font> Meet and <font class="afont" >Queue</font></h3>
         <h2>
@@ -59,6 +77,9 @@
     <h1>Register</h1>
     <p>Please fill in this form to create an account.</p>
     <hr>
+
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" required>
 
     <label for="email"><b>Email</b></label>
     <input type="text" placeholder="Enter Email" name="email" required>
