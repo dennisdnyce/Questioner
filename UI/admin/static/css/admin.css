@@ -43,15 +43,6 @@ body {
   float: right;
 }
 
-.topnav a.activitylog {
-  background-color: #f1f1f1;
-  color: green;
-  height:10px;
-  font-size: 20px;
-  font-weight: bold;
-  float: right;
-}
-
 .topnav .search-container {
   float: right;
 }
@@ -103,80 +94,9 @@ body {
   padding: 20px;
 }
 
-/* Column container */
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-/* Create two unequal columns that sits next to each other */
-/* Sidebar/left column */
-.sidea {
-  flex: 30%;
-  background-color: #e9e9e9;
-  padding: 20px;
-}
-
-/* Main column */
-.main {
-  flex: 40%;
-  background-color: #e9e9e9;
-  padding: 20px;
-  text-align: center;
-}
-
-.sideb {
-  flex: 30%;
-  background-color: #e9e9e9;
-  padding: 20px;
-}
-
-
-.fakelink {
-  background-color: #fff;
-  width: 100%;
-  padding: 20px;
-  color: green;
-  height: 60px;
-}
-
-.fakelink a {
-  color: green;
-  text-decoration: none;
-}
-
-.fakep {
-  color: green;
-  text-decoration: none;
-}
-
-.fakea {
-  color: #62594F;
-  text-decoration: none;
-}
-
-.nodecor {
-    text-decoration: none;
-}
-
-
-.fakeimgh4 a {
-    text-align: center;
-    text-decoration:none;
-}
-
 .moreplease {
     background-color: green;
     width: 80%;
-    padding: 20px;
-    height: 60px;
-    opacity: 0.7;
-    text-align: center;
-}
-
-.morepleased {
-    background-color: green;
-    width: 100%;
     padding: 20px;
     height: 60px;
     opacity: 0.7;
@@ -189,52 +109,26 @@ body {
   font-weight: bolder;
 }
 
-.morepleased a {
+.fakep {
+  color: green;
   text-decoration: none;
-  color: white;
-  font-weight: bolder;
 }
 
-.blackc {
-    color: #000000;
+.fakea {
+  color: #62594F;
+  text-decoration: none;
 }
 
-.commentdiv {
-    background-color: #eff0f1;
-    color: green;
-}
 
-.moreinline {
-    display:inline-block;
-    width: 25px;
-}
-
-.replymargin {
-    margin-left:150px;
-}
-
-.commentpad {
-    padding: 20px;
-    color: green;
-}
-
-.colordate {
-    color: #551a8b;
-}
-
-#userleft3 {
+#adminhistry {
     background-color: #f1f1f1;
 }
 
-#userhistry {
+#admindel {
     background-color: #f1f1f1;
 }
 
-#idpost {
-    background-color: #f1f1f1;
-}
-
-#idcomment {
+#adminright {
     background-color: #f1f1f1;
 }
 
@@ -246,36 +140,9 @@ body {
     background-color: #f1f1f1;
 }
 
-#userleft2 {
-    background-color: #f1f1f1;
-}
-
-#commentrepa {
-    text-decoration: none;
-}
-
-#commentrepb {
-    text-decoration: none;
-}
-
-#typer {
-    color: #4CAF50;
-}
-
-#logoo {
-    color: green;
-}
-.qfont {
-color: red;
-}
-
-.afont {
-color: blue;
-}
-
 /* Add padding to containers */
 .container {
-  padding: 12px;
+  padding: 16px;
   background-color: white;
 }
 
@@ -357,28 +224,9 @@ hr {
   padding: 10px;
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 12px 16px;
-  z-index: 1;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.homefeed a {
-  text-decoration:none;
-  color: green;
+.footing {
+    clear: both;
+    padding-bottom: 450px;
 }
 
 .footer {
