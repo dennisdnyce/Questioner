@@ -50,5 +50,5 @@ cd UI and access the needed html template on the browser of your choice *preferr
 
 * The Almighty for the awesome gift of life
 * Andela-Nairobi Cycle-36 Cohorts
-* Hat tip to anyone whose code was used
+* A Hat tip to anyone whose code was referenced
 * Endless Motivation from friends and family
