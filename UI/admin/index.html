@@ -2,22 +2,27 @@
 
 <html lang="en">
 <head>
-  <title>Post Meetups</title>
-  <link rel="icon" href="static/images/qanda.png">
+  <title>Create Meetup</title>
+  <link rel="icon" href="static/images/kanda.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/admin.css">
 </head>
 <body>
 
     <div class="topnav">
-      <a class="active" href="home.html"> <img src="static/images/qanda.png" alt="" height="30px" width="90px"> </a>
-      <a class="active" href="home.html"> Questioner </a>
+      <a class="active" href="index.html"> <img src="static/images/kanda.png" alt="site logo" height="30px" width="50px"> </a>
+      <a class="active" href="index.html"> Questioner </a>
       <a class="activity" href="index.html"> logout </a>
-      <a class="activity" href="profile.html"> Hi, Admin John Doe </a>
+      <a class="activity" href="index.html"> Hi, Admin John Doe </a>
       <div class="search-contained">
 
+        <form action="#">
 
+           <input type="text" placeholder="search..." name="username" required>
+
+          <button type="submit">Go</button>
+        </form>
 
       </div>
       <br />
@@ -27,13 +32,18 @@
     </div>
 
     <div class="holder">
-    <div class="left">
+    <div class="left" id="userleft">
         <br />
-
+    <h2>Admin Dashboard</h2>
+    <img src="static/images/user.jpg" alt="user icon" height="90px" width="90px" class="pic" />
+    <p>Email: adminusermail@gmail.com</p>
+    <p>Username: Admin Wakili Mwakili</p>
+    <div class="moreplease"><a href="index.html">Create Meetup</a></div><br>
+    <div class="moreplease"><a href="delete.html">Delete Meetup</a></div><br>
     </div>
     <div class="middle">
+    <div class="fakeimg">
         <br /><br />
-
         <form action="#">
        <div class="container">
         <h1>Post a Meetup</h1>
@@ -41,9 +51,10 @@
         <hr>
         <label for="title"><b>Meetup Title:</b></label>
         <input type="text" placeholder="Enter Question Title" name="title" required>
-
+        <label for="title"><b>Meetup Calendar:</b></label>
+        <input type="text" placeholder="e.g  02/12/2019 10:00 hrs" name="title" required>
         <label for="tags"><b>Meetup Tag(s):</b></label>
-        <input type="text" placeholder="Separate question tags with a coma e.g tag1, tag2" name="tags" required>
+        <input type="text" placeholder="Separate meetup tags with a coma e.g tag1, tag2" name="tags" required>
         <label for="image"><b>Meetup Image:</b></label>
         <input type="file" name="pic" accept="image/*"><br /><br />
         <label for="description"><b>Meetup description:</b></label>
@@ -55,16 +66,34 @@
         <button type="submit" class="registerbtn">Submit</button>
       </div>
       </form>
-
-
     </div>
-    <div class="right">
 
     </div>
+    <div class="right" id="adminhistry"><br />
+        <br />
+    <h2>Current Feeds</h2>
+    <p><a class="fakep" href="#">
+        <img src="static/images/kigali.jpg" height="auto" width="60%"/><br />
+        The importance of having a positive mindset
+        <p><a class="fakep" href="#">
+            <img src="static/images/food.jpg" height="auto" width="60%"/><br />
+            Food waste innovation in Africa
+        </a></p>
+    <p><a class="fakep" href="#">
+        <img src="static/images/andela.jpg" height="auto" width="60%"/><br />
+        Best way to come up with UI/UX experience the Andela way
+    </a></p>
+    <p><a class="fakep" href="#">
+        <img src="static/images/health.jpg" height="auto" width="60%"/><br />
+        Corporate health as a key factor for collaboration
+    </a></p>
+    </a>
+    </p>
     </div>
-     <div id="footing"></div>
+    </div>
+
      <div class="footer">
-     <p>© 2019.  All Rights Reserved. Project by Andela-Nairobi Cycle-36 Cohort.</p>
+     <p>© 2018. All Rights Reserved. Project by Andela-Nairobi Cycle-36 Cohort.</p>
      </div>
 
 </body>
