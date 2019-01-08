@@ -10,7 +10,7 @@ body {
   overflow: hidden;
   background-color: #f1f1f1;
   padding: 10px;
-  position: fixed; /* Set the navbar to fixed position */
+  position: fixed;
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
 }
@@ -388,4 +388,55 @@ hr {
   color: black;
   text-align: center;
   display: inline-block;
+}
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .topnav .active img {
+        height: 80px;
+        width: 70%;
+        margin-left:;
+
+    }
+    .topnav {
+      overflow: hidden;
+      padding: 10px;
+      position: inherit;
+      width: 100%; /* Full width */
+    }
+    .topnav a#texting {
+        margin-top: 70px;
+        width: 100%;
+        text-align: center;
+        color: #344EA2;
+    }
+    .topnav a.activitylog {
+        width: 300px;
+        margin-top: 280px;
+        color: #B22E17;
+        position: absolute;
+        top: 0;
+        margin-left: 20px;
+    }
+    .topnav input[type=text] {
+      padding: 6px;
+      margin-top: 18px;
+      margin-left: 55px;
+      font-size: 17px;
+    }
+    .topnav .search-container button {
+      margin-right: 206px;
+      margin-top: 15px;
+    }
+    .row .sidea {
+        margin-top: -55px;
+        background-color: #f1f1f1;
+    }
+    .row .main .fakeimg {
+        margin-top: -70px;
+    }
+
 }

@@ -278,13 +278,17 @@ hr {
       width: 65%;
     }
     .topnav .search-contained button {
-      margin-top: 18px;
-    }
-    .holder .middle .fakeimg {
-        margin-top: -25px;
+      margin-top: 20px;
     }
     .holder .left {
         margin-top: -50px;
+    }
+    .holder .right {
+        display: none;
+    }
+    .footing {
+        clear: both;
+        padding-bottom: 200px;
     }
     .footer  {
         background-color: green;
