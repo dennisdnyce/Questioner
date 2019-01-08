@@ -12,8 +12,8 @@
 <body>
 
     <div class="topnav">
-      <a class="active" href="home.html"> <img src="static/images/kanda.png" alt="site logo" height="30px" width="50px"> </a>
-      <a class="active" href="home.html"> Home </a>
+     <a class="active" href="home.html"> <img src="static/images/kanda.png" alt="site logo" height="30px" width="50px"> </a>
+      <a class="active" id="texting" href="home.html"><font> Home </font></a>
        <a class="activitylog" href="resetpassword.html"> forgot your password? </a>
       <div class="search-container">
         <form action="#">
@@ -21,7 +21,7 @@
            <input type="text" placeholder="username" name="username" required>
           <input type="text" placeholder="password" name="password" required>
 
-          <button type="submit">sign-in</button>
+          <button id="sign" type="submit">sign-in</button>
         </form>
       </div>
       <br />
@@ -60,7 +60,7 @@
 
     <div class="fakeimg">
         <h1 id="logoo">Questioner</h1>
-        <img src="static/images/qanda.png" height="200px" />
+        <img src="static/images/qanda.png" width="200px" height="200px" />
         <h3>Where <font class="qfont" >Questions</font> Meet and <font class="afont" >Queue</font></h3>
         <h2>
             <a id="typer" class="typewrite" data-period="2000" data-type='[ "Hello there, Welcome to Questioner.", "A friendly meetup web app for hot queued questions.", "Here at Questioner...", "Expect real and in-person conversations.", "Embrace open and honest intentions.", "Always be safe and respectful.", "Put your members first.", "Expect to empower each other.", "And most importantly,,,", "Expect to grow!", "Bye for Now..." ]'>
