@@ -6,7 +6,7 @@ import instance
 
 
 class TestConfig(unittest.TestCase):
-    ''' tests the main configuration class '''
+    ''' tests the default configuration environment '''
     def test_config(self):
         app = Flask(__name__, instance_relative_config=True)
         app.config.from_object(instance.config.Config)
