@@ -52,8 +52,8 @@ class TestUserRegistration(unittest.TestCase):
         self.assertEqual(response.status_code, 201)
         response_msg = json.loads(response.data.decode('UTF-8'))
         self.assertIn("Registration Successful", response_msg["RegistrationMessage"])
-        response2 = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(username="dnyce1",
-        email="jumaspay1@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
+        response2 = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dnyce1",
+        phoneNumber='0713714835', isAdmin='True', email="jumaspay3@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
         self.assertEqual(response2.status_code, 201)
         response_msg2 = json.loads(response.data.decode('UTF-8'))
         self.assertIn("Registration Successful", response_msg2["RegistrationMessage"])
@@ -82,88 +82,88 @@ class TestUserRegistration(unittest.TestCase):
 
     def test_user_registration_no_username(self):
         ''' tests that a user cannot signup without a username '''
-        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(username="",
-        email="jumaspay@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
+        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="",
+        phoneNumber='0713714835', isAdmin='True', email="jumaspay3@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
         self.assertEqual(response.status_code, 401)
         response_msg = json.loads(response.data.decode("UTF-8"))
         self.assertIn("Username is required", response_msg["error"])
 
     def test_user_registration_invalid_username(self):
         ''' tests that a user cannot signup with an invalid username '''
-        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(username="dny",
-        email="jumaspay@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
+        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dny",
+        phoneNumber='0713714835', isAdmin='True', email="jumaspay3@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
         self.assertEqual(response.status_code, 401)
         response_msg = json.loads(response.data.decode("UTF-8"))
         self.assertIn("Invalid username, make sure its 5 to 12 characters long", response_msg["error"])
 
     def test_user_registration_no_password(self):
         ''' tests that a user cannot signup without a password '''
-        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(username="dnyce",
-        email="jumaspay@gmail.com", password="", confirm_password="")), content_type="application/json")
+        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dnyce1",
+        phoneNumber='0713714835', isAdmin='True', email="jumaspay3@gmail.com", password="", confirm_password="thisispass")), content_type="application/json")
         self.assertEqual(response.status_code, 401)
         response_msg = json.loads(response.data.decode("UTF-8"))
         self.assertIn("Password is required", response_msg["error"])
 
     def test_user_registration_no_password_confirmation(self):
         ''' tests that a user cannot signup without password confirmation '''
-        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(username="dnyce",
-        email="jumaspay@gmail.com", password="thisispass", confirm_password="")), content_type="application/json")
+        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dnyce1",
+        phoneNumber='0713714835', isAdmin='True', email="jumaspay3@gmail.com", password="thisispass", confirm_password="")), content_type="application/json")
         self.assertEqual(response.status_code, 401)
         response_msg = json.loads(response.data.decode("UTF-8"))
         self.assertIn("Password confirmation is required", response_msg["error"])
 
     def test_user_registration_password_mismatch(self):
         ''' tests that a user cannot signup without confirming registered password '''
-        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(username="dnyce",
-        email="jumaspay@gmail.com", password="thisispass", confirm_password="thispass")), content_type="application/json")
+        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dnyce1",
+        phoneNumber='0713714835', isAdmin='True', email="jumaspay3@gmail.com", password="thisispass2", confirm_password="thisispass")), content_type="application/json")
         self.assertEqual(response.status_code, 401)
         response_msg = json.loads(response.data.decode("UTF-8"))
         self.assertIn("Password mismatch", response_msg["error"])
 
     def test_user_registration_password_too_short(self):
         ''' tests that a user cannot signup with password length less than 8 characters '''
-        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(username="dnyce",
-        email="jumaspay@gmail.com", password="thisisp", confirm_password="thisisp")), content_type="application/json")
+        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dnyce1",
+        phoneNumber='0713714835', isAdmin='True', email="jumaspay3@gmail.com", password="thisisp", confirm_password="thisisp")), content_type="application/json")
         self.assertEqual(response.status_code, 401)
         response_msg = json.loads(response.data.decode("UTF-8"))
         self.assertIn("Password length should be atleast 8 characters long and atmost 12 characters long", response_msg["error"])
 
     def test_user_registration_password_too_long(self):
         ''' tests that a user cannot signup with password length more than 12 characters '''
-        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(username="dnyce",
-        email="jumaspay@gmail.com", password="thisispasswordlong", confirm_password="thisispasswordlong")), content_type="application/json")
+        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dnyce1",
+        phoneNumber='0713714835', isAdmin='True', email="jumaspay3@gmail.com", password="thisispasswordlong", confirm_password="thisispasswordlong")), content_type="application/json")
         self.assertEqual(response.status_code, 401)
         response_msg = json.loads(response.data.decode("UTF-8"))
         self.assertIn("Password length should be atleast 8 characters long and atmost 12 characters long", response_msg["error"])
 
     def test_user_registration_no_email(self):
         ''' tests that a user cannot signup without an email address '''
-        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(username="dnyce",
-        email="", password="thisispass", confirm_password="thisispass")), content_type="application/json")
+        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dnyce1",
+        phoneNumber='0713714835', isAdmin='True', email="", password="thisispass", confirm_password="thisispass")), content_type="application/json")
         self.assertEqual(response.status_code, 401)
         response_msg = json.loads(response.data.decode("UTF-8"))
         self.assertIn("Email is required", response_msg["error"])
 
     def test_user_registration_invalid_email1(self):
         ''' tests that a user cannot signup with an invalid email address '''
-        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(username="dnyce",
-        email="jumaspay", password="thisispass", confirm_password="thisispass")), content_type="application/json")
+        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dnyce1",
+        phoneNumber='0713714835', isAdmin='True', email="jumaspay", password="thisispass", confirm_password="thisispass")), content_type="application/json")
         self.assertEqual(response.status_code, 401)
         response_msg = json.loads(response.data.decode("UTF-8"))
         self.assertIn("Invalid email", response_msg["error"])
 
     def test_user_registration_invalid_email2(self):
         ''' tests that a user cannot signup with an invalid email address '''
-        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(username="dnyce",
-        email="jumaspay@gmail", password="thisispass", confirm_password="thisispass")), content_type="application/json")
+        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dnyce1",
+        phoneNumber='0713714835', isAdmin='True', email="jumaspay3@gmail", password="thisispass", confirm_password="thisispass")), content_type="application/json")
         self.assertEqual(response.status_code, 401)
         response_msg = json.loads(response.data.decode("UTF-8"))
         self.assertIn("Invalid email", response_msg["error"])
 
     def test_user_registration_invalid_email3(self):
         ''' tests that a user cannot signup with an invalid email address '''
-        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(username="dnyce",
-        email="jumaspay@gmail.", password="thisispass", confirm_password="thisispass")), content_type="application/json")
+        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dnyce1",
+        phoneNumber='0713714835', isAdmin='True', email="jumaspay3@gmail.", password="thisispass", confirm_password="thisispass")), content_type="application/json")
         self.assertEqual(response.status_code, 401)
         response_msg = json.loads(response.data.decode("UTF-8"))
         self.assertIn("Invalid email", response_msg["error"])
@@ -174,8 +174,8 @@ class TestUserRegistration(unittest.TestCase):
         self.assertEqual(response.status_code, 201)
         response_msg = json.loads(response.data.decode('UTF-8'))
         self.assertIn("Registration Successful", response_msg["RegistrationMessage"])
-        response2 = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(username="dennisdnyce",
-        email="jumaspayed@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
+        response2 = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dennisdnyce",
+        phoneNumber='0713714835', isAdmin='True', email="jumaspay3@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
         self.assertEqual(response2.status_code, 400)
 
     def test_user_registration_email_taken(self):
@@ -184,8 +184,8 @@ class TestUserRegistration(unittest.TestCase):
         self.assertEqual(response.status_code, 201)
         response_msg = json.loads(response.data.decode('UTF-8'))
         self.assertIn("Registration Successful", response_msg["RegistrationMessage"])
-        response2 = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(username="dnyce",
-        email="jumaspay@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
+        response2 = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dnyce1",
+        phoneNumber='0713714835', isAdmin='True', email="jumaspay@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
         self.assertEqual(response2.status_code, 400)
 
     def test_user_login(self):
