@@ -33,7 +33,7 @@ def post_meetup():
 
 @mymeets.route('/meetups/<int:meetupId>', methods=['GET'])
 def get_meetup(meetupId):
-    ''' method to get a single posted meetup '''
+    ''' method to get single posted meetup '''
     i = meeting.get_a_meetup(meetupId)
     if i:
         data = request.get_json()
