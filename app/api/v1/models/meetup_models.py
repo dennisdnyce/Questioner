@@ -7,7 +7,7 @@ class MeetupRegistration():
         self.location = location
         self.images = images
         self.topic = topic
-        self.happeningOn = happenningOn
+        self.happeningOn = happeningOn
         self.Tags = Tags
         self.createdOn = datetime.now()
         self.All_Meetups = []
@@ -24,7 +24,7 @@ class MeetupRegistration():
         }
         self.All_Meetups.append(my_meetup)
 
-    def get_a_meetup(self, id):
+    def get_a_meetup(self, meetupId):
         for meet in self.All_Meetups:
-            if meet['id'] == id:
+            if meet['meetupId'] == meetupId:
                 return meet
