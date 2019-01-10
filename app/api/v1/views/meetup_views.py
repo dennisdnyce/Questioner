@@ -46,7 +46,7 @@ def get_meetup(meetupId):
 
 @mymeets.route('/meetups/upcoming', methods=['GET'])
 def get_all_posted_meetups():
-    ''' method to get all the posted meetup '''
+    ''' method to get all the posted meetupss '''
     me = meeting.All_Meetups
     if me:
         return jsonify({"status": 200, "data": me}), 200
