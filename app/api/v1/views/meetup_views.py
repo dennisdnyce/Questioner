@@ -5,7 +5,7 @@ mymeets = Blueprint('meet1', __name__, url_prefix='/api/v1')
 
 from ..models.user_models import UserRegistration
 from ..models.meetup_models import MeetupRegistration
-from ..models.meetup_models import QuestionRegistration
+from ..models.question_models import QuestionRegistration
 from ..utils.validators import validate_meetup
 
 user = UserRegistration('firstname', 'lastname', 'othername', 'phoneNumber', 'username', 'email', 'password', 'confirm_password', 'isAdmin')
