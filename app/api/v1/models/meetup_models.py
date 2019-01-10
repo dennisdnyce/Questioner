@@ -1,6 +1,5 @@
 from datetime import datetime
 
-
 class MeetupRegistration():
     ''' class model for meetup registration '''
     def __init__(self, location, images, topic, happeningOn, Tags):
