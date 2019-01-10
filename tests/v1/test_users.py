@@ -176,7 +176,7 @@ class TestUserRegistration(unittest.TestCase):
         self.assertIn("Registration Successful", response_msg["RegistrationMessage"])
         response2 = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dennisdnyce",
         phoneNumber='0713714835', isAdmin='True', email="jumaspay3@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
-        self.assertEqual(response2.status_code, 400)
+        self.assertEqual(response2.status_code, 409)
 
     def test_user_registration_email_taken(self):
         ''' tests that a user cannot signup with an email already registered '''
@@ -186,7 +186,7 @@ class TestUserRegistration(unittest.TestCase):
         self.assertIn("Registration Successful", response_msg["RegistrationMessage"])
         response2 = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dnyce1",
         phoneNumber='0713714835', isAdmin='True', email="jumaspay@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
-        self.assertEqual(response2.status_code, 400)
+        self.assertEqual(response2.status_code, 409)
 
     def test_user_login(self):
         ''' tests that a user can be able to successfully log in '''
