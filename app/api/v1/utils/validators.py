@@ -62,4 +62,19 @@ def validate_meetup(json):
     if not (json["happeningOn"].strip()):
         return jsonify({"status": 401, "error":"date required"}), 401
 
-    return True           
+    return True
+
+def validate_question(json):
+    if not (json["title"].strip()):
+        return jsonify({"status": 401, "error":"title required"}), 401
+
+    if not (json["body"].strip()):
+        return jsonify({"status": 401, "error":"body required"}), 401
+
+    return True
+
+def validate_rsvp(json):
+    if not (json["response"].strip()):
+        return jsonify({"status": 401, "error":"its a simple Yes or No question"}), 401
+
+    return True

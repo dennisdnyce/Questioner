@@ -22,12 +22,12 @@ def register_user():
     username = data['username']
     usrs = user.get_username(username)
     if usrs in user.All_Users:
-        return jsonify({"status": 400, "error": "Username already taken!"}), 400
+        return jsonify({"status": 409, "error": "Username already taken!"}), 409
 
     email = data['email']
     usr = user.get_user_email(email)
     if usr in user.All_Users:
-        return jsonify({"status": 400, "error": "Email address already registered!"}), 400
+        return jsonify({"status": 409, "error": "Email address already registered!"}), 409
 
     password = data['password']
     confirm_password = data['confirm_password']
