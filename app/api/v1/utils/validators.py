@@ -39,7 +39,7 @@ def validate_users(json):
         return jsonify({"status": 401, "error":"Password mismatch"}), 401
 
     if not(json["isAdmin"].strip()):
-        return jsonify({"status": 401, "error":"Usertype is required"}), 401    
+        return jsonify({"status": 401, "error":"Usertype is required"}), 401
 
     return True
 
@@ -51,3 +51,15 @@ def validate_user_login(json):
         return jsonify({"status": 401, "error":"password required to log in"}), 401
 
     return True
+
+def validate_meetup(json):
+    if not (json["location"].strip()):
+        return jsonify({"status": 401, "error":"meetup location required"}), 401
+
+    if not (json["topic"].strip()):
+        return jsonify({"status": 401, "error":"topic required"}), 401
+
+    if not (json["happeningOn"].strip()):
+        return jsonify({"status": 401, "error":"date required"}), 401
+
+    return True           
