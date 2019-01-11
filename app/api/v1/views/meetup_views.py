@@ -79,7 +79,7 @@ def upvote_a_question(questionId):
     if qn:
         qn[0]['votes'] = request.json.get('votes', qn[0]['votes'] + 1)
         return jsonify({"status": 201, "data": qn[0], "VoteMessage": "upvote success"}), 201
-    return jsonify({"status": 404, "error": "Specified question not found"}), 404
+    return jsonify({"status": 404, "error": "Specified question not found!"}), 404
 
 @mymeets.route('/questions/<int:questionId>/downvote', methods=['PATCH'])
 def downvote_a_question(questionId):
