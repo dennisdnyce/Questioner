@@ -88,7 +88,7 @@ def downvote_a_question(questionId):
     if qn:
         if qn[0]['votes'] > 0:
             qn[0]['votes'] = request.json.get('votes', qn[0]['votes'] - 1)
-            return jsonify({"status": 201, "data": qn[0], "VoteMessage": "upvote success"}), 201
+            return jsonify({"status": 201, "data": qn[0], "VoteMessage": "downvote success"}), 201
         return jsonify({"status": 401, "error": "a downvote cannot be negative"}), 401
     return jsonify({"status": 404, "error": "Specified question not found"}), 404
 
