@@ -118,7 +118,7 @@ class TestUserRegistration(unittest.TestCase):
         phoneNumber='0713714835', isAdmin='', email="jumaspay3@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
         self.assertEqual(response.status_code, 401)
         response_msg = json.loads(response.data.decode("UTF-8"))
-        self.assertIn("Usertype is required", response_msg["error"])    
+        self.assertIn("Usertype is required", response_msg["error"])
 
     def test_user_registration_no_username(self):
         ''' tests that a user cannot signup without a username '''

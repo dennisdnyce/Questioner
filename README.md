@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dennisdnyce/Questioner.svg?branch=develop)](https://travis-ci.org/dennisdnyce/Questioner)[![Coverage Status](https://coveralls.io/repos/github/dennisdnyce/Questioner/badge.svg?branch=develop)](https://coveralls.io/github/dennisdnyce/Questioner?branch=develop)[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/dennisdnyce/Questioner.svg?branch=develop)](https://travis-ci.org/dennisdnyce/Questioner)[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 # QuestionerAPI
 Questioner is a mock of a meetup platform where any user is allowed to register for an account and pose questions on scheduled meetups by an admin user that he/she is interested in attending or nonetheless, comment on posted questions relating to meetups. The more a meetup question is upvoted, the more it qualifies to be objectified during the meetup. An admin user can create and delete meetups and a regular user can pose questions on posted meetups and schedule to attend the meetup if possible.
@@ -8,10 +8,25 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### NOTE
 - The project is managed by the PivotalTracker software management platform, preview it at https://www.pivotaltracker.com/n/projects/2235504
-- The project documentation is not yet created
-- The app is not yet hosted on heroku
+- The app is hosted on heroku on url https://jumaquestioner.herokuapp.com/
 
 ### Implemented Endpoints
+
+[POST /meetups]
+[GET /meetups/<int:meetupId>]
+[GET /meetups/upcoming]
+
+[POST /meetups/<int:meetupId>/questions]
+
+[POST /meetups/<int:meetupId>/rsvps]
+
+[PATCH /questions/<int:questionId>/upvote]
+[PATCH /questions/<int:questionId>/downvote]
+
+[POST /auth/signup]
+[POST /auth/login]
+[POST /auth/users]
+[POST /auth/users/<int:userId>]
 
 
 ### Prerequisites
@@ -37,7 +52,9 @@ The things you need to setup the project and its relevant configuration.
 - set up the project running environment :~$(myenv)export FLASK_ENV = development
                                          :~$(myenv)export FLASK_DEBUG = 1
                                          :~$(myenv)export FLASK_APP = run.py
-- run the project :~$(myenv)flask run                                          
+- run the project :~$(myenv)flask run  
+
+-test endpoints on Postman                                        
 ```
 ## Running Tests
 ```
@@ -45,7 +62,6 @@ The things you need to setup the project and its relevant configuration.
 
 - checking test coverage :~$(myenv)coverage report -m
 ```
-## Testing on Postman
 
 ## Contributing
 > To get Started...
