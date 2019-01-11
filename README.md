@@ -12,21 +12,21 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Implemented Endpoints
 
-[POST /meetups]
-[GET /meetups/<int:meetupId>]
-[GET /meetups/upcoming]
+- [POST /meetups]
+- [GET /meetups/<int:meetupId>]
+- [GET /meetups/upcoming]
 
-[POST /meetups/<int:meetupId>/questions]
+- [POST /meetups/<int:meetupId>/questions]
 
-[POST /meetups/<int:meetupId>/rsvps]
+- [POST /meetups/<int:meetupId>/rsvps]
 
-[PATCH /questions/<int:questionId>/upvote]
-[PATCH /questions/<int:questionId>/downvote]
+- [PATCH /questions/<int:questionId>/upvote]
+- [PATCH /questions/<int:questionId>/downvote]
 
-[POST /auth/signup]
-[POST /auth/login]
-[POST /auth/users]
-[POST /auth/users/<int:userId>]
+- [POST /auth/signup]
+- [POST /auth/login]
+- [POST /auth/users]
+- [POST /auth/users/<int:userId>]
 
 
 ### Prerequisites
