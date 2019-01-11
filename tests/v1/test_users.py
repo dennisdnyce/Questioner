@@ -80,6 +80,46 @@ class TestUserRegistration(unittest.TestCase):
         email="jumaspay@gmail.com")), content_type="application/json")
         self.assertEqual(response2.status_code, 404)
 
+    def test_user_registration_no_firstname(self):
+        ''' tests that a user cannot signup without a firstname '''
+        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='', lastname='jumaa', othername='wafula', username="dennisdnyce",
+        phoneNumber='0713714835', isAdmin='True', email="jumaspay3@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
+        self.assertEqual(response.status_code, 401)
+        response_msg = json.loads(response.data.decode("UTF-8"))
+        self.assertIn("firstname is required", response_msg["error"])
+
+    def test_user_registration_no_lastname(self):
+        ''' tests that a user cannot signup without a lastname '''
+        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennis', lastname='', othername='wafula', username="dennisdnyce",
+        phoneNumber='0713714835', isAdmin='True', email="jumaspay3@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
+        self.assertEqual(response.status_code, 401)
+        response_msg = json.loads(response.data.decode("UTF-8"))
+        self.assertIn("lastname is required", response_msg["error"])
+
+    def test_user_registration_no_othername(self):
+        ''' tests that a user cannot signup without othername '''
+        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennis', lastname='jumaa', othername='', username="dennisdnyce",
+        phoneNumber='0713714835', isAdmin='True', email="jumaspay3@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
+        self.assertEqual(response.status_code, 401)
+        response_msg = json.loads(response.data.decode("UTF-8"))
+        self.assertIn("othername is required", response_msg["error"])
+
+    def test_user_registration_no_phone(self):
+        ''' tests that a user cannot signup without a phone '''
+        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennis', lastname='jumaa', othername='wafula', username="dennisdnyce",
+        phoneNumber='', isAdmin='True', email="jumaspay3@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
+        self.assertEqual(response.status_code, 401)
+        response_msg = json.loads(response.data.decode("UTF-8"))
+        self.assertIn("phoneNumber is required", response_msg["error"])
+
+    def test_user_registration_no_usertype(self):
+        ''' tests that a user cannot signup without a phone '''
+        response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennis', lastname='jumaa', othername='wafula', username="dennisdnyce",
+        phoneNumber='0713714835', isAdmin='', email="jumaspay3@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
+        self.assertEqual(response.status_code, 401)
+        response_msg = json.loads(response.data.decode("UTF-8"))
+        self.assertIn("Usertype is required", response_msg["error"])    
+
     def test_user_registration_no_username(self):
         ''' tests that a user cannot signup without a username '''
         response = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="",
