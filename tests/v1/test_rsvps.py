@@ -39,7 +39,7 @@ class TestUserRegistration(unittest.TestCase):
         response = self.client.post("/api/v1/meetups", data=json.dumps(self.meetup), content_type="application/json")
         self.assertEqual(response.status_code, 201)
         response = self.client.post("/api/v1/meetups/1/rsvps", data=json.dumps(dict(response="")), content_type="application/json")
-        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.status_code, 406)
 
     def test_post_rsvp(self):
         ''' tests that a user can make an rsvp  '''
