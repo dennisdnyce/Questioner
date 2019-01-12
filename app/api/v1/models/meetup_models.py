@@ -12,6 +12,7 @@ class MeetupRegistration():
         self.All_Meetups = []
 
     def post_a_meetup(self, meetupId, location, images, topic, createdOn, happeningOn, Tags):
+        ''' method to post a meetup '''
         my_meetup = {
             "meetupId": meetupId,
             "createdOn": createdOn,
@@ -24,6 +25,7 @@ class MeetupRegistration():
         self.All_Meetups.append(my_meetup)
 
     def get_a_meetup(self, meetupId):
+        ''' method to get specific meetup based on its id '''
         for meet in self.All_Meetups:
             if meet['meetupId'] == meetupId:
                 return meet

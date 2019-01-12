@@ -44,17 +44,17 @@ class TestUserRegistration(unittest.TestCase):
     def test_meetup_empty_location(self):
         ''' tests that an admin user cannot post a meetup without location '''
         response = self.client.post("/api/v1/meetups", data=json.dumps(dict(Tags="andela", images="me.jpg", topic="life of pie", location="", happeningOn="23-05-1990")), content_type="application/json")
-        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.status_code, 406)
 
     def test_meetup_empty_topic(self):
         ''' tests that an admin user cannot post a meetup without topic '''
         response = self.client.post("/api/v1/meetups", data=json.dumps(dict(Tags="andela", images="me.jpg", topic="", location="kitale", happeningOn="23-05-1990")), content_type="application/json")
-        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.status_code, 406)
 
     def test_meetup_empty_happening_date(self):
         ''' tests that an admin user cannot post a meetup without calendar date '''
         response = self.client.post("/api/v1/meetups", data=json.dumps(dict(Tags="andela", images="me.jpg", topic="life of pie", location="kitale", happeningOn="")), content_type="application/json")
-        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.status_code, 406)
 
     def test_existing_meetup(self):
         ''' tests that a user can fetch existing meetup '''

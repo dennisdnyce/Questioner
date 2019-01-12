@@ -5,7 +5,7 @@ class Config(object):
     '''Parent configuration class'''
     DEBUG = False
     CSRF_ENABLED = True
-    SECRET_KEY = 'thisismysecretkeywhydontyouuseyours'
+    SECRET_KEY = os.getenv('SECRET_KEY', 'thisismysecretkeywhydontyouuseyours')
 
 
 class DevelopmentConfig(Config):

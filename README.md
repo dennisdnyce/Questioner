@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dennisdnyce/Questioner.svg?branch=develop)](https://travis-ci.org/dennisdnyce/Questioner)[![Coverage Status](https://coveralls.io/repos/github/dennisdnyce/Questioner/badge.svg?branch=develop)](https://coveralls.io/github/dennisdnyce/Questioner?branch=develop)[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/dennisdnyce/Questioner.svg?branch=develop)](https://travis-ci.org/dennisdnyce/Questioner)  [![Coverage Status](https://coveralls.io/repos/github/dennisdnyce/Questioner/badge.svg?branch=develop)](https://coveralls.io/github/dennisdnyce/Questioner?branch=develop)  [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)  [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 # QuestionerAPI
 Questioner is a mock of a meetup platform where any user is allowed to register for an account and pose questions on scheduled meetups by an admin user that he/she is interested in attending or nonetheless, comment on posted questions relating to meetups. The more a meetup question is upvoted, the more it qualifies to be objectified during the meetup. An admin user can create and delete meetups and a regular user can pose questions on posted meetups and schedule to attend the meetup if possible.
@@ -7,8 +7,10 @@ Questioner is a mock of a meetup platform where any user is allowed to register 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. Watch out for the deployment notes on how to deploy the project on a live system.
 
 ### NOTE
-- The project is managed by the PivotalTracker software management platform, preview it at https://www.pivotaltracker.com/n/projects/2235504
-- The app is hosted on heroku on url https://jumaquestioner.herokuapp.com/
+- The project's normal user UI can be found here <a href="https://dennisdnyce.github.io/Questioner/UI/" target="_blank">gh-pages</a>
+- The project's admin user UI can be found here <a href="https://dennisdnyce.github.io/Questioner/UI/admin" target="_blank">admin gh-pages</a>
+- The project is managed by the PivotalTracker software management platform, preview it at <a href="https://www.pivotaltracker.com/n/projects/2235504" target="_blank">PivotalTracker</a>
+- The app is hosted on <a href="https://jumaquestioner.herokuapp.com/" target="_blank">Heroku</a>
 
 ### Implemented Endpoints
 
@@ -24,9 +26,8 @@ These instructions will get you a copy of the project up and running on your loc
 - [PATCH /questions/<int:questionId>/downvote]
 
 - [POST /auth/signup]
-- [POST /auth/login]
-- [POST /auth/users]
-- [POST /auth/users/<int:userId>]
+- [GET /auth/users]
+- [GET /auth/users/<int:userId>]
 
 
 ### Prerequisites

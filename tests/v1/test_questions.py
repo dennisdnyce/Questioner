@@ -40,14 +40,14 @@ class TestUserRegistration(unittest.TestCase):
         response = self.client.post("/api/v1/meetups", data=json.dumps(self.meetup), content_type="application/json")
         self.assertEqual(response.status_code, 201)
         response = self.client.post("/api/v1/meetups/1/questions", data=json.dumps(dict(title="", body="this is a body")), content_type="application/json")
-        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.status_code, 406)
 
     def test_question_empty_body(self):
         ''' tests that a user cannot post a question meetup without body '''
         response = self.client.post("/api/v1/meetups", data=json.dumps(self.meetup), content_type="application/json")
         self.assertEqual(response.status_code, 201)
         response = self.client.post("/api/v1/meetups/1/questions", data=json.dumps(dict(title="i am andelan", body="")), content_type="application/json")
-        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.status_code, 406)
 
     def test_existing_question_upvote(self):
         ''' tests that a user can upvote existing question '''
@@ -100,4 +100,4 @@ class TestUserRegistration(unittest.TestCase):
         response = self.client.patch("/api/v1/questions/1/downvote", data=json.dumps(self.question), content_type="application/json")
         self.assertEqual(response.status_code, 201)
         response = self.client.patch("/api/v1/questions/1/downvote", data=json.dumps(self.question), content_type="application/json")
-        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.status_code, 406)
