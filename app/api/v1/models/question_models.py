@@ -22,6 +22,6 @@ class QuestionRegistration():
 
     def get_a_question(self, questionId):
         ''' method to fetch a single meetup question based on its unique id '''
-        for qn in self.All_Questions:
-            if qn['questionId'] == questionId:
-                return qn
+        for question_post in self.All_Questions:
+            if question_post['questionId'] == questionId:
+                return question_post

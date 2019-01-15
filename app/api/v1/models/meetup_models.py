@@ -26,6 +26,6 @@ class MeetupRegistration():
 
     def get_a_meetup(self, meetupId):
         ''' method to get specific meetup based on its id '''
-        for meet in self.All_Meetups:
-            if meet['meetupId'] == meetupId:
-                return meet
+        for meetup in self.All_Meetups:
+            if meetup['meetupId'] == meetupId:
+                return meetup

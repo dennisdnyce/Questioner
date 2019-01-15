@@ -16,6 +16,6 @@ class RsvpRegistration():
         self.All_Rsvps.append(my_rsvp)
 
     def view_an_rsvp(self, rsvpId):
-        for rev in self.All_Rsvps:
-            if rev['rsvpId'] == rsvpId:
-                return rev
+        for rsvp_post in self.All_Rsvps:
+            if rsvp_post['rsvpId'] == rsvpId:
+                return rsvp_post

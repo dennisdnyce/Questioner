@@ -11,6 +11,7 @@ These instructions will get you a copy of the project up and running on your loc
 - The project's admin user UI can be found here <a href="https://dennisdnyce.github.io/Questioner/UI/admin" target="_blank">admin gh-pages</a>
 - The project is managed by the PivotalTracker software management platform, preview it at <a href="https://www.pivotaltracker.com/n/projects/2235504" target="_blank">PivotalTracker</a>
 - The app is hosted on <a href="https://jumaquestioner.herokuapp.com/" target="_blank">Heroku</a>
+- The project documentation can be found <a href="https://documenter.getpostman.com/view/6005626/RznJmcEC" target="_blank">Here</a>
 
 ### Implemented Endpoints
 
