@@ -1,10 +1,10 @@
-import pytest
-import unittest
-import json
 import os
+import json
+import unittest
+
+import pytest
+
 from app import create_app
-
-
 from app.api.v1.models.user_models import UserRegistration
 from app.api.v1.views.user_views import user
 from app.api.v1.utils.validators import validate_users
@@ -30,6 +30,7 @@ class TestUserRegistration(unittest.TestCase):
             }
 
     def tearDown(self):
+        ''' destroys the test variables after the tests finish executing '''
         del user.All_Users[:]
 
 
@@ -60,9 +61,11 @@ class TestUserRegistration(unittest.TestCase):
         self.assertEqual(response.status_code, 201)
         response_msg = json.loads(response.data.decode('UTF-8'))
         self.assertIn("Registration Successful", response_msg["RegistrationMessage"])
-        response2 = self.client.get("/api/v1/auth/users/1", data=json.dumps(dict(userId=1, username="dennisdnyce",
+        response = self.client.get("/api/v1/auth/users/1", data=json.dumps(dict(userId=1, username="dennisdnyce",
         email="jumaspay@gmail.com", phoneNumber="0713714835", isAdmin="True")), content_type="application/json")
-        self.assertEqual(response2.status_code, 200)
+        self.assertEqual(response.status_code, 200)
+        response_msg = json.loads(response.data.decode('UTF-8'))
+        self.assertIn("User Found", response_msg["Message"])
 
     def test_get_non_existing_registered_user(self):
         ''' tests that the records of a registered user can be retrieved '''
@@ -70,9 +73,11 @@ class TestUserRegistration(unittest.TestCase):
         self.assertEqual(response.status_code, 201)
         response_msg = json.loads(response.data.decode('UTF-8'))
         self.assertIn("Registration Successful", response_msg["RegistrationMessage"])
-        response2 = self.client.get("/api/v1/auth/users/11", data=json.dumps(dict(userId=1, username="dennisdnyce",
+        response = self.client.get("/api/v1/auth/users/11", data=json.dumps(dict(userId=1, username="dennisdnyce",
         email="jumaspay@gmail.com")), content_type="application/json")
-        self.assertEqual(response2.status_code, 404)
+        self.assertEqual(response.status_code, 404)
+        response_msg = json.loads(response.data.decode('UTF-8'))
+        self.assertIn("User not found", response_msg["error"])
 
     def test_user_registration_no_firstname(self):
         ''' tests that a user cannot signup without a firstname '''
@@ -203,6 +208,8 @@ class TestUserRegistration(unittest.TestCase):
         response2 = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dennisdnyce",
         phoneNumber='0713714835', isAdmin='True', email="jumaspay3@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
         self.assertEqual(response2.status_code, 409)
+        response_msg2 = json.loads(response2.data.decode("UTF-8"))
+        self.assertIn("Username already taken!", response_msg2["error"])
 
     def test_user_registration_email_taken(self):
         ''' tests that a user cannot signup with an email already registered '''
@@ -213,6 +220,8 @@ class TestUserRegistration(unittest.TestCase):
         response2 = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dnyce1",
         phoneNumber='0713714835', isAdmin='True', email="jumaspay@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
         self.assertEqual(response2.status_code, 409)
+        response_msg = json.loads(response2.data.decode('UTF-8'))
+        self.assertIn("Email address already registered!", response_msg["error"])
 
 
 ''' make tests conveniently executable '''

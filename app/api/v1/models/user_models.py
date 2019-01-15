@@ -38,18 +38,18 @@ class UserRegistration():
 
     def get_a_user(self, userId):
         ''' method to fetch a single user based on the user id'''
-        for usr in self.All_Users:
-            if usr['userId'] == userId:
-                return usr
+        for single_user in self.All_Users:
+            if single_user['userId'] == userId:
+                return single_user
 
     def get_username(self, username):
         ''' method to get a username on signup to check if it exists'''
-        for usres in self.All_Users:
-            if usres['username'] == username:
-                return usres
+        for user_username in self.All_Users:
+            if user_username['username'] == username:
+                return user_username
 
     def get_user_email(self, email):
         ''' method to get a user email on signup to check if it exists '''
-        for usre in self.All_Users:
-            if usre['email'] == email:
-                return usre
+        for user_email in self.All_Users:
+            if user_email['email'] == email:
+                return user_email

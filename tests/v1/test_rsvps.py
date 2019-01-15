@@ -1,10 +1,10 @@
-import pytest
+import os
 import unittest
 import json
-import os
+
+import pytest
+
 from app import create_app
-
-
 from app.api.v1.models.meetup_models import MeetupRegistration
 from app.api.v1.models.rsvp_models import RsvpRegistration
 from app.api.v1.views.meetup_views import meeting, rsvp
@@ -38,19 +38,36 @@ class TestUserRegistration(unittest.TestCase):
         ''' tests that a user cannot make an rsvp with an empty response '''
         response = self.client.post("/api/v1/meetups", data=json.dumps(self.meetup), content_type="application/json")
         self.assertEqual(response.status_code, 201)
+        response_msg = json.loads(response.data.decode('UTF-8'))
+        self.assertIn("Success", response_msg["MeetupMessage"])
         response = self.client.post("/api/v1/meetups/1/rsvps", data=json.dumps(dict(response="")), content_type="application/json")
         self.assertEqual(response.status_code, 406)
+        response_msg = json.loads(response.data.decode('UTF-8'))
+        self.assertIn("its a simple Yes or No question", response_msg["error"])
 
     def test_post_rsvp(self):
         ''' tests that a user can make an rsvp  '''
         response = self.client.post("/api/v1/meetups", data=json.dumps(self.meetup), content_type="application/json")
         self.assertEqual(response.status_code, 201)
+        response_msg = json.loads(response.data.decode('UTF-8'))
+        self.assertIn("Success", response_msg["MeetupMessage"])
         response = self.client.post("/api/v1/meetups/1/rsvps", data=json.dumps(dict(response="yes")), content_type="application/json")
         self.assertEqual(response.status_code, 201)
+        response_msg = json.loads(response.data.decode('UTF-8'))
+        self.assertIn("Success", response_msg["RsvpMessage"])
 
     def test_post_rsvp_no_meetup(self):
         ''' tests that a user cannot make an rsvp to a non-existing meetup  '''
         response = self.client.post("/api/v1/meetups", data=json.dumps(self.meetup), content_type="application/json")
         self.assertEqual(response.status_code, 201)
+        response_msg = json.loads(response.data.decode('UTF-8'))
+        self.assertIn("Success", response_msg["MeetupMessage"])
         response = self.client.post("/api/v1/meetups/66/rsvps", data=json.dumps(dict(response="yes")), content_type="application/json")
         self.assertEqual(response.status_code, 404)
+        response_msg = json.loads(response.data.decode('UTF-8'))
+        self.assertIn("Meetup unavailable", response_msg["error"])
+
+
+''' make tests conveniently executable '''
+if __name__ == '__main__':
+    unittest.main()
