@@ -48,7 +48,7 @@ class TestUserRegistration(unittest.TestCase):
         response_msg = json.loads(response.data.decode('UTF-8'))
         self.assertIn("Registration Successful", response_msg["RegistrationMessage"])
         response2 = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dnyce1",
-        phoneNumber='0713714835', isAdmin='True', email="jumaspay3@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
+        phoneNumber='0713714838', isAdmin='True', email="jumaspay3@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
         self.assertEqual(response2.status_code, 201)
         response_msg2 = json.loads(response.data.decode('UTF-8'))
         self.assertIn("Registration Successful", response_msg2["RegistrationMessage"])
@@ -206,7 +206,7 @@ class TestUserRegistration(unittest.TestCase):
         response_msg = json.loads(response.data.decode('UTF-8'))
         self.assertIn("Registration Successful", response_msg["RegistrationMessage"])
         response2 = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dennisdnyce",
-        phoneNumber='0713714835', isAdmin='True', email="jumaspay3@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
+        phoneNumber='0713724835', isAdmin='True', email="jumaspay3@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
         self.assertEqual(response2.status_code, 409)
         response_msg2 = json.loads(response2.data.decode("UTF-8"))
         self.assertIn("Username already taken!", response_msg2["error"])
@@ -218,10 +218,22 @@ class TestUserRegistration(unittest.TestCase):
         response_msg = json.loads(response.data.decode('UTF-8'))
         self.assertIn("Registration Successful", response_msg["RegistrationMessage"])
         response2 = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dnyce1",
-        phoneNumber='0713714835', isAdmin='True', email="jumaspay@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
+        phoneNumber='0713814835', isAdmin='True', email="jumaspay@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
         self.assertEqual(response2.status_code, 409)
         response_msg = json.loads(response2.data.decode('UTF-8'))
         self.assertIn("Email address already registered!", response_msg["error"])
+
+    def test_user_registration_phone_taken(self):
+        ''' tests that a user cannot signup with an email already registered '''
+        response = self.client.post("/api/v1/auth/signup", data=json.dumps(self.user), content_type="application/json")
+        self.assertEqual(response.status_code, 201)
+        response_msg = json.loads(response.data.decode('UTF-8'))
+        self.assertIn("Registration Successful", response_msg["RegistrationMessage"])
+        response2 = self.client.post("/api/v1/auth/signup", data=json.dumps(dict(firstname='dennisa', lastname='jumaa', othername='wafula', username="dnyce1",
+        phoneNumber='0713714835', isAdmin='True', email="jumaspay56@gmail.com", password="thisispass", confirm_password="thisispass")), content_type="application/json")
+        self.assertEqual(response2.status_code, 409)
+        response_msg = json.loads(response2.data.decode('UTF-8'))
+        self.assertIn("phone number already in use!", response_msg["error"])
 
 
 ''' make tests conveniently executable '''

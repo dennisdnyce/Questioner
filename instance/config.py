@@ -4,8 +4,8 @@ import os
 class Config(object):
     '''Parent configuration class'''
     DEBUG = False
-    CSRF_ENABLED = True
-    SECRET_KEY = os.getenv('SECRET_KEY', 'thisismysecretkeywhydontyouuseyours')
+    SECRET_KEY = os.getenv('SECRET')
+    DATABASE = os.getenv('DATABASE_URL')
 
 
 class DevelopmentConfig(Config):
@@ -21,6 +21,7 @@ class TestingConfig(Config):
     '''configurations for staging environment'''
     DEBUG = True
     TESTING = True
+    TESTDATABASE = os.getenv('TESTDB')
 
 class ProductionConfig(Config):
     '''configurations for production environment'''

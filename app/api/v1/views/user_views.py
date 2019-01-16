@@ -18,7 +18,11 @@ def register_user():
     firstname = data['firstname']
     lastname = data['lastname']
     othername = data['othername']
+
     phoneNumber = data['phoneNumber']
+    user_phone = user.get_user_phone(phoneNumber)
+    if user_phone in user.All_Users:
+        return make_response(jsonify({"status": 409, "error": "phone number already in use!"}), 409)
 
     username = data['username']
     user_username = user.get_username(username)
