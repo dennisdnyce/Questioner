@@ -11,8 +11,6 @@ class TestConfig(unittest.TestCase):
         app = Flask(__name__, instance_relative_config=True)
         app.config.from_object(instance.config.Config)
         self.assertTrue(app.config['DEBUG'] is False)
-        self.assertTrue(app.config['CSRF_ENABLED'] is True)
-        self.assertTrue(app.config['SECRET_KEY'] is 'thisismysecretkeywhydontyouuseyours')
 
     def test_development(self):
         ''' tests the configuration for the development environment '''
