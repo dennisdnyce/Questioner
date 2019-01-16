@@ -12,8 +12,10 @@ services:
 before_script:
   - psql -c "CREATE DATABASE questioner;" -U postgres
   - psql -c "CREATE USER questioneruser WITH PASSWORD 'id28294242';" -U postgres
+  - psql -c "CREATE DATABASE questioner_test;" -U postgres
+  - psql -c "CREATE USER questioneruser WITH PASSWORD 'id28294242';" -U postgres
   - python3 manage.py migrate
-  
+
 script:
   - pytest
   - pytest --cov-report term-missing --cov=app
