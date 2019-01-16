@@ -5,6 +5,14 @@ python:
 
 install:
   - pip install -r requirements.txt
+
+ services:
+  - postgresql
+
+before_script:
+  - psql -c "CREATE DATABASE questioner;" -U postgres
+  - psql -c "CREATE USER questioneruser WITH PASSWORD 'id28294242';" -U postgres
+  - python3 manage.py database migrate
 script:
   - pytest
   - pytest --cov-report term-missing --cov=app
