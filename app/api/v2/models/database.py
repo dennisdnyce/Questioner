@@ -15,9 +15,9 @@ class QuestionerDatabaseConnection(object):
                 createdOn DATE NOT NULL DEFAULT CURRENT_DATE,
                 firstname TEXT NOT NULL,
                 lastname TEXT NOT NULL,
-                phoneNumber varchar(100) UNIQUE NOT NULL,
-                username varchar(100) UNIQUE NOT NULL,
-                email varchar(100) UNIQUE NOT NULL,
+                phoneNumber varchar(100) NOT NULL,
+                username varchar(100) NOT NULL,
+                email varchar(100) NOT NULL,
                 password varchar(100) NOT NULL,
                 isAdmin BOOLEAN NOT NULL DEFAULT TRUE
                 )
