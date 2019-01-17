@@ -1,5 +1,8 @@
 from datetime import datetime
+
+import jwt
 from werkzeug.security import generate_password_hash, check_password_hash
+
 from .database import QuestionerDatabaseConnection
 
 class UserRegistration(QuestionerDatabaseConnection):
@@ -7,7 +10,6 @@ class UserRegistration(QuestionerDatabaseConnection):
     def __init__(self, firstname=None, lastname=None, othername=None, phoneNumber=None, username=None, email=None, password=None, confirm_password=None):
         super().__init__()
         db = QuestionerDatabaseConnection
-        self.userId = None
         self.registered = datetime.now()
         self.isAdmin = False
         self.firstname = firstname
@@ -32,13 +34,6 @@ class UserRegistration(QuestionerDatabaseConnection):
         self.cursor.execute(command)
         all_users = self.cursor.fetchall()
         return all_users
-
-    def get_a_user(self, userId):
-        ''' method to fetch a single user based on the user id'''
-        command = "SELECT * FROM users WHERE userId = '%s'" % (userId)
-        self.cursor.execute(command)
-        user_id = self.cursor.fetchall()
-        return user_id
 
     def get_username(self, username):
         ''' method to get a username on signup to check if it exists'''

@@ -32,9 +32,9 @@ class QuestionerTestDatabase(object):
                 firstname TEXT NOT NULL,
                 lastname TEXT NOT NULL,
                 othername TEXT NOT NULL,
-                phoneNumber varchar(100) UNIQUE NOT NULL,
-                username varchar(100) UNIQUE NOT NULL,
-                email varchar(100) UNIQUE NOT NULL,
+                phoneNumber varchar(100) NOT NULL,
+                username varchar(100) NOT NULL,
+                email varchar(100) NOT NULL,
                 password varchar(100) NOT NULL,
                 confirm_password varchar(100) NOT NULL
                 )
