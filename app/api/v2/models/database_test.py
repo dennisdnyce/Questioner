@@ -32,9 +32,9 @@ class QuestionerTestDatabase(object):
                 firstname TEXT NOT NULL,
                 lastname TEXT NOT NULL,
                 othername TEXT NOT NULL,
-                phoneNumber varchar(100) UNIQUE NOT NULL,
-                username varchar(100) UNIQUE NOT NULL,
-                email varchar(100) UNIQUE NOT NULL,
+                phoneNumber varchar(100) NOT NULL,
+                username varchar(100) NOT NULL,
+                email varchar(100) NOT NULL,
                 password varchar(100) NOT NULL,
                 confirm_password varchar(100) NOT NULL
                 )
@@ -76,7 +76,7 @@ class QuestionerTestDatabase(object):
     def __connection():
         ''' Creates a connection to the database '''
         return psycopg2.connect(
-            host="localhost", database="questioner_test", user="questioneruser", password="id28294242", port="5432"
+            host="localhost", database="questioner_test", user="tester", password="mytestingpassword", port="5432"
         )
 
     def get_connection(self):

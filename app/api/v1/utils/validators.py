@@ -30,11 +30,19 @@ def validate_users(json):
     if not (json["password"].strip()):
         return jsonify({"status": 406, "error":"Password is required"}), 406
 
+    for space in (json["password"].strip()):
+        if space.isspace():
+                  return jsonify({"status": 406, "error":"No spaces allowed in password"}), 406
+
     if (len(json["password"].strip()) < 8 or len(json["password"].strip()) > 12):
         return jsonify({"status": 406, "error":"Password length should be atleast 8 characters long and atmost 12 characters long"}), 406
 
     if not (json["confirm_password"].strip()):
         return jsonify({"status": 406, "error":"Password confirmation is required"}), 406
+
+    for space in (json["confirm_password"].strip()):
+        if space.isspace():
+                  return jsonify({"status": 406, "error":"No spaces allowed in password"}), 406
 
     if not (json["password"].strip() == json["confirm_password"].strip()):
         return jsonify({"status": 406, "error":"Password mismatch"}), 406
