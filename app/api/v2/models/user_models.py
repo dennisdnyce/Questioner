@@ -34,3 +34,9 @@ class UserRegistration(QuestionerDatabaseConnection):
         all_users = self.cursor.fetchall()
         return all_users
 
+    def get_a_user(self, userId):
+        ''' method to get a username on signup to check if he/she exists'''
+        command = """select * from users where userid = %s"""
+        self.cursor.execute(command, (userId, ))
+        record = self.cursor.fetchall()
+        return record
