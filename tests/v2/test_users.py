@@ -18,7 +18,8 @@ class TestUserRegistration(unittest.TestCase):
         ''' define test variables and initialize the app '''
         self.app = create_app(config='testing')
         self.client = self.app.test_client()
-
+        connector.destroy_questioner_test_tables()
+        connector.create_questioner_test_tables()
         self.user ={
             'firstname': 'dennis',
             'lastname': 'juma',
@@ -30,15 +31,6 @@ class TestUserRegistration(unittest.TestCase):
             'password': 'thisispass',
             'confirm_password': 'thisispass'
             }
-        connector.create_questioner_test_tables()
-
-    def test_user_registration(self):
-        ''' tests that a user can signup '''
-        response = self.client.post("/api/v2/auth/signup", data=json.dumps(dict(firstname='jumaame', lastname='cheselemi', othername='wafula', username="jumarut",
-        phoneNumber='0759345467', isAdmin='False', email="jumarut@gmail.com", password="joshuapass", confirm_password="joshuapass")), content_type="application/json")
-        self.assertEqual(response.status_code, 201)
-        response_msg = json.loads(response.data.decode("UTF-8"))
-        self.assertIn("Registration Successful", response_msg["RegistrationMessage"])
 
 
     def test_user_registration_no_firstname(self):
@@ -160,13 +152,6 @@ class TestUserRegistration(unittest.TestCase):
         self.assertEqual(response.status_code, 422)
         response_msg = json.loads(response.data.decode("UTF-8"))
         self.assertIn("Invalid email", response_msg["error"])
-
-    def test_get_registrated_user(self):
-        ''' tests that a registered user can be accessed '''
-        response = self.client.get("/api/v2/auth/users/1", content_type="application/json")
-        self.assertEqual(response.status_code, 200)
-        response_msg = json.loads(response.data.decode("UTF-8"))
-        self.assertIn("User Found", response_msg["Message"])
 
     def tearDown(self):
         ''' destroys the test variables after the tests finish executing '''
