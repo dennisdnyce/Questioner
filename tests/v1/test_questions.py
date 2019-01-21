@@ -11,7 +11,7 @@ from app.api.v1.views.meetup_views import meeting, question
 from app.api.v1.utils.validators import validate_question
 
 
-class TestUserRegistration(unittest.TestCase):
+class TestQuestionRegistration(unittest.TestCase):
     ''' This class represents the User Registration test case '''
     def setUp(self):
         ''' define test variables and initialize the app '''

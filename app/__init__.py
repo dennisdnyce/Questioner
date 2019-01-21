@@ -7,10 +7,29 @@ from app.api.v2.views.user_views import myquestionerv2 as usrv2
 from app.api.v1.views.meetup_views import myquestioner as mtv1
 from app.api.v2.views.meetup_views import myquestionerv2 as mtv2
 
+def page_not_found(e):
+  return jsonify(
+            {"error": "The url you are trying to access cannot be found. Please check your route and try again", "status": 404}
+), 404
+
+def method_not_found(e):
+  return jsonify(
+            {"error": "The http method you are using is not allowed for requested URL. Please check and try again", "status": 405}
+), 405
+
+def bad_request_method(e):
+  return jsonify(
+            {"error": "The server cannot understand the request you are asking of it. Please check and try again", "status": 400}
+), 400
+
+def internal_server_issues(e):
+  return jsonify(
+            {"error": "There was an internal server error, this could be anything; a typo error, a syntax error, or configuration issues", "status": 500}
+), 500
+
 def create_app(config):
     '''function creating the flask app'''
     app = Flask(__name__)
-    app.config['JWT_SECRET_KEY'] = 'this-is-my-super-28294242-secret'
     jwt = JWTManager(app)
     app.register_blueprint(usrv1)
     app.register_blueprint(usrv2)

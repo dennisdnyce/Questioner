@@ -39,8 +39,7 @@ def register_user():
     access_token = create_access_token(identity=email)
     questioner_user = UserRegistration(firstname, lastname, othername, phoneNumber, username, email, generate_password_hash(password), generate_password_hash(confirm_password))
 
-    questioner_user.register_a_user(firstname, lastname, othername, phoneNumber, username, email, generate_password_hash(password), generate_password_hash(confirm_password))
-
+    questioner_user.register_a_user()
 
     return jsonify({"status": 201, "RegistrationMessage": "Registration Successful", "data": [{"Welcome": username, "token": access_token, "Member Since": registered}]}), 201
 
@@ -68,7 +67,6 @@ def login_a_user():
                 access_token = create_access_token(identity=user_email, expires_delta=datetime.timedelta(minutes=30))
                 return jsonify({"Message": "User logged in successfully", "status": 200, "data": [{"token": access_token, "Welcome back": found_username}]}), 200
             return jsonify({"status": 404, "error": "Unable to login, check login credentials"}), 404
-        return jsonify({"status": 404, "error": "User not found!"}), 404
 
 
 @myquestionerv2.route('/auth/users', methods=['GET'])
@@ -76,22 +74,18 @@ def get_all_registered_users():
     ''' method to get all registered users '''
     questioner_users = myuser.get_all_users()
     if questioner_users:
-        return jsonify({"status": 200, "data": questioner_users}), 200
+        return jsonify({"status": 200, "Message": "All Users", "data": questioner_users}), 200
     return jsonify({"status": 404, "error": "No users registered yet"}), 404
 
 @myquestionerv2.route('/auth/users/<int:userId>', methods=['GET'])
 def get_registered_user(userId):
     ''' method to fetch a single registered user '''
-    conn = psycopg2.connect(host="localhost", database="questioner", user="questioneruser", password="id28294242", port="5432")
-    cur = conn.cursor()
-    user_query = """select * from users where userid = %s"""
-    cur.execute(user_query, (userId, ))
-    record = cur.fetchall()
-    for row in record:
-        user_Id = row[0]
-        registered = row[1]
-        username = row[7]
-
-        return jsonify({"status": 200, "Message": "User Found", "data": [{"Member Id": user_Id, "Registered On": registered, "username": username}]}), 200
+    single_user = myuser.get_a_user(userId)
+    if single_user:
+        data = request.get_json()
+        username = data['username']
+        phone = data['phoneNumber']
+        email = data['email']
+        return jsonify({"status": 200, "Message": "User Found", "data": [{"username": username, "phone": phone, "email": email}]}), 200
     return jsonify({"status": 404, "error": "User not found!"}), 404
     conn.close()

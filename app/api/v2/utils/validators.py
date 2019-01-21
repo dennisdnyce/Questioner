@@ -88,10 +88,16 @@ def validate_meetup(json):
 
 def validate_question(json):
     if not (json["title"].strip()):
-        return jsonify({"status": 406, "error":"title required"}), 406
+        return jsonify({"status": 406, "error":"question title required"}), 406
 
     if not (json["body"].strip()):
-        return jsonify({"status": 406, "error":"body required"}), 406
+        return jsonify({"status": 406, "error":"question body required"}), 406
+
+    return True
+
+def validate_comment(json):
+    if not (json["body"].strip()):
+        return jsonify({"status": 406, "error":"comment body required"}), 406
 
     return True
 

@@ -21,15 +21,16 @@ class UserRegistration(QuestionerDatabaseConnection):
         self.confirm_password = confirm_password
         self.cursor = db.cursor_obj(self)
 
-    def register_a_user(self,firstname,lastname,othername,phoneNumber,username,email,password,confirm_password):
+    def register_a_user(self):
         ''' method to register a user '''
         sql = """INSERT INTO users (firstname,lastname,othername,phoneNumber,username,email,password,confirm_password)
-                 VALUES(%s,%s,%s,%s,%s,%s,%s,%s)"""
+                 VALUES(%s,%s,%s,%s,%s,%s,%s,%s) RETURNING userId"""
         self.cursor.execute(sql, (self.firstname,self.lastname,self.othername,self.phoneNumber,self.username,self.email,self.password,self.confirm_password))
 
     def get_all_users(self):
         ''' method to fetch all the registered users '''
-        command = "SELECT * FROM users"
+        command = "SELECT firstname, lastname, othername, phoneNumber, username, email FROM users"
         self.cursor.execute(command)
         all_users = self.cursor.fetchall()
         return all_users
+

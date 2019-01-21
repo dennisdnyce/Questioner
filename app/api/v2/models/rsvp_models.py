@@ -1,8 +1,12 @@
 from datetime import datetime
 
-class RsvpRegistration():
+from .database import QuestionerDatabaseConnection
+
+class RsvpRegistration(QuestionerDatabaseConnection):
     ''' class for RSVP model '''
-    def __init__(self, response):
+    def __init__(self, response=None):
+        super().__init__()
+        db = QuestionerDatabaseConnection
         self.response = response
         self.createdOn = datetime.now()
-        self.All_Rsvps = []
+
