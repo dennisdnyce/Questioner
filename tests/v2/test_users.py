@@ -18,6 +18,7 @@ class TestUserRegistration(unittest.TestCase):
         ''' define test variables and initialize the app '''
         self.app = create_app(config='testing')
         self.client = self.app.test_client()
+        connector.destroy_questioner_test_tables()
         connector.create_questioner_test_tables()
         self.user ={
             'firstname': 'dennis',
@@ -25,10 +26,10 @@ class TestUserRegistration(unittest.TestCase):
             'othername': 'wafula',
             'phoneNumber': '0716714835',
             'username': 'dennisd',
+            'isAdmin': 'True',
             'email': 'wafula@gmail.com',
             'password': 'thisispass',
-            'confirm_password': 'thisispass',
-            'isAdmin': 'True'
+            'confirm_password': 'thisispass'
             }
 
 

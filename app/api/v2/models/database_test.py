@@ -58,6 +58,12 @@ class QuestionerTestDatabase(object):
                 votes INT NOT NULL DEFAULT 0
                 )
             """,
+            """CREATE TABLE IF NOT EXISTS test_comments(
+                commentId  serial PRIMARY KEY,
+                createdOn DATE NOT NULL DEFAULT CURRENT_DATE,
+                body TEXT NOT NULL
+                )
+            """,
             """CREATE TABLE IF NOT EXISTS test_rsvps(
                 rsvpId  serial PRIMARY KEY,
                 createdOn DATE NOT NULL DEFAULT CURRENT_DATE,
@@ -80,7 +86,7 @@ class QuestionerTestDatabase(object):
         )
 
     def get_connection(self):
-        ''' Gets the connection parameters specified above '''
+        ''' Gets the connection parameters specified above for connecting to Questioner Database '''
         self.db = QuestionerTestDatabase()
         self.conn = self.db.__connection()
         self.conn.autocommit = True
@@ -100,6 +106,7 @@ class QuestionerTestDatabase(object):
             " DROP TABLE IF EXISTS test_users CASCADE",
             " DROP TABLE IF EXISTS test_meetups CASCADE",
             " DROP TABLE IF EXISTS test_questions CASCADE",
+            " DROP TABLE IF EXISTS test_comments CASCADE",
             " DROP TABLE IF EXISTS test_rsvps CASCADE"
         ]
         for command in drop_tables:

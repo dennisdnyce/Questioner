@@ -126,4 +126,4 @@ class TestUserRegistration(unittest.TestCase):
 
 ''' make tests conveniently executable '''
 if __name__ == '__main__':
-    unittest.main()        
+    unittest.main()

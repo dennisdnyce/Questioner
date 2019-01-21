@@ -66,8 +66,8 @@ def validate_users(json):
 
 
 def validate_user_login(json):
-    if not (json["username"].strip()):
-        return jsonify({"status": 406, "error":"username required to log in"}), 406
+    if not (json["email"].strip()):
+        return jsonify({"status": 406, "error":"email required to log in"}), 406
 
     if not (json["password"].strip()):
         return jsonify({"status": 406, "error":"password required to log in"}), 406
@@ -88,10 +88,16 @@ def validate_meetup(json):
 
 def validate_question(json):
     if not (json["title"].strip()):
-        return jsonify({"status": 406, "error":"title required"}), 406
+        return jsonify({"status": 406, "error":"question title required"}), 406
 
     if not (json["body"].strip()):
-        return jsonify({"status": 406, "error":"body required"}), 406
+        return jsonify({"status": 406, "error":"question body required"}), 406
+
+    return True
+
+def validate_comment(json):
+    if not (json["body"].strip()):
+        return jsonify({"status": 406, "error":"comment body required"}), 406
 
     return True
 

@@ -1,21 +1,25 @@
 from datetime import datetime
 
-class RsvpRegistration():
+from .database import QuestionerDatabaseConnection
+
+class RsvpRegistration(QuestionerDatabaseConnection):
     ''' class for RSVP model '''
-    def __init__(self, response):
+    def __init__(self, response=None):
+        super().__init__()
+        db = QuestionerDatabaseConnection
         self.response = response
         self.createdOn = datetime.now()
-        self.All_Rsvps = []
+        self.cursor = db.cursor_obj(self)
 
-    def make_an_rsvp(self, rsvpId, response, createdOn):
-        my_rsvp = {
-            "rsvpId": rsvpId,
-            "response": response,
-            "createdOn": createdOn
-        }
-        self.All_Rsvps.append(my_rsvp)
+    def make_an_rsvp(self):
+        ''' method to make a meetup rsvp '''
+        sql = """INSERT INTO rsvps (response)
+                 VALUES(%s) RETURNING rsvpId"""
+        self.cursor.execute(sql, (self.response, ))
 
     def view_an_rsvp(self, rsvpId):
-        for rsvp_post in self.All_Rsvps:
-            if rsvp_post['rsvpId'] == rsvpId:
-                return rsvp_post
+        ''' method to fetch a single rsvp based on its unique id '''
+        command = """select * from rsvps where rsvpId = %s"""
+        self.cursor.execute(command, (rsvpId, ))
+        record = self.cursor.fetchall()
+        return record

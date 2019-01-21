@@ -2,6 +2,7 @@ import psycopg2
 from psycopg2 import extras
 
 class QuestionerDatabaseConnection(object):
+    '''class responsible for the connection to the questioner database'''
     def __init__(self):
         self.conn = None
         self.cur = None
@@ -44,10 +45,10 @@ class QuestionerDatabaseConnection(object):
                 meetupId  serial PRIMARY KEY,
                 createdOn DATE NOT NULL DEFAULT CURRENT_DATE,
                 location TEXT NOT NULL,
-                images varchar(250) NOT NULL,
+                images varchar(250),
                 topic TEXT NOT NULL,
                 happeningOn DATE NOT NULL,
-                Tags TEXT NOT NULL
+                Tags varchar(250)
                 )
             """,
             """CREATE TABLE IF NOT EXISTS questions(
@@ -56,6 +57,12 @@ class QuestionerDatabaseConnection(object):
                 title varchar(250) NOT NULL,
                 body TEXT NOT NULL,
                 votes INT NOT NULL DEFAULT 0
+                )
+            """,
+            """CREATE TABLE IF NOT EXISTS comments(
+                commentId  serial PRIMARY KEY,
+                createdOn DATE NOT NULL DEFAULT CURRENT_DATE,
+                body TEXT NOT NULL
                 )
             """,
             """CREATE TABLE IF NOT EXISTS rsvps(
@@ -100,6 +107,7 @@ class QuestionerDatabaseConnection(object):
             " DROP TABLE IF EXISTS users CASCADE",
             " DROP TABLE IF EXISTS meetups CASCADE",
             " DROP TABLE IF EXISTS questions CASCADE",
+            " DROP TABLE IF EXISTS comments CASCADE",
             " DROP TABLE IF EXISTS rsvps CASCADE"
         ]
         for command in drop_tables:
