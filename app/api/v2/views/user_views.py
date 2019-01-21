@@ -43,6 +43,7 @@ def register_user():
 
     return jsonify({"status": 201, "RegistrationMessage": "Registration Successful", "data": [{"Welcome": username, "token": access_token, "Member Since": registered}]}), 201
 
+
 @myquestionerv2.route('/auth/login', methods=['POST'])
 def login_a_user():
     ''' method to log in a user '''
@@ -66,7 +67,7 @@ def login_a_user():
                 access_token = create_access_token(identity=user_email, expires_delta=datetime.timedelta(minutes=30))
                 return jsonify({"Message": "User logged in successfully", "status": 200, "data": [{"token": access_token, "Welcome back": found_username}]}), 200
             return jsonify({"status": 404, "error": "Unable to login, check login credentials"}), 404
-    return jsonify({"status": 404, "error": "User email does not exist!"}), 404
+
 
 @myquestionerv2.route('/auth/users', methods=['GET'])
 def get_all_registered_users():
