@@ -40,3 +40,10 @@ class UserRegistration(QuestionerDatabaseConnection):
         self.cursor.execute(command, (userId, ))
         record = self.cursor.fetchall()
         return record
+
+    def login_a_user(self, email):
+        ''' method to log in a user into the application '''
+        command = """select * from users where email = %s"""
+        self.cursor.execute(command, (email, ))
+        record = self.cursor.fetchall()
+        return record

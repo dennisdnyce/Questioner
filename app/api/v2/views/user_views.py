@@ -47,26 +47,22 @@ def register_user():
 def login_a_user():
     ''' method to log in a user '''
     data = request.get_json()
-    user_email = data['email']
-    user_password = data['password']
+    email = data['email']
+    password = data['password']
     login_validator = validate_user_login(data)
     if (login_validator != True):
         return login_validator
-    conn = psycopg2.connect(host="localhost", database="questioner", user="questioneruser", password="id28294242", port="5432")
-    cur = conn.cursor()
-    user_query = """select * from users where email = %s"""
-    cur.execute(user_query, (user_email, ))
-    record = cur.fetchall()
-    for row in record:
-        found_email = row[8]
-        found_password = row[9]
-        found_username = row[7]
+    logger = myuser.login_a_user(email)
+    if logger:
+        data2 = request.get_json()
+        found_password = data2['password']
+        found_email = data2['email']
         if found_email:
-            if check_password_hash(found_password, user_password):
+            if check_password_hash(found_password, password):
                 access_token = create_access_token(identity=user_email, expires_delta=datetime.timedelta(minutes=30))
                 return jsonify({"Message": "User logged in successfully", "status": 200, "data": [{"token": access_token, "Welcome back": found_username}]}), 200
             return jsonify({"status": 404, "error": "Unable to login, check login credentials"}), 404
-    return jsonify({"status": 404, "error": "User email does not exist!"}), 404
+    return jsonify({"status": 404, "error": "User does not exist!"}), 404
 
 @myquestionerv2.route('/auth/users', methods=['GET'])
 def get_all_registered_users():

@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dennisdnyce/Questioner.svg?branch=develop)](https://travis-ci.org/dennisdnyce/Questioner)  [![Coverage Status](https://coveralls.io/repos/github/dennisdnyce/Questioner/badge.svg?branch=develop)](https://coveralls.io/github/dennisdnyce/Questioner?branch=develop)  [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)  [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/dennisdnyce/Questioner.svg?branch=develop)](https://travis-ci.org/dennisdnyce/Questioner)  [![Coverage Status](https://coveralls.io/repos/github/dennisdnyce/Questioner/badge.svg?branch=develop)](https://coveralls.io/github/dennisdnyce/Questioner?branch=develop)  [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)  [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 # QuestionerAPI
 Questioner is a mock of a meetup platform where any user is allowed to register for an account and pose questions on scheduled meetups by an admin user that he/she is interested in attending or nonetheless, comment on posted questions relating to meetups. The more a meetup question is upvoted, the more it qualifies to be objectified during the meetup. An admin user can create and delete meetups and a regular user can pose questions on posted meetups and schedule to attend the meetup if possible.
@@ -13,22 +13,38 @@ These instructions will get you a copy of the project up and running on your loc
 - The app is hosted on <a href="https://jumaquestioner.herokuapp.com/" target="_blank">Heroku</a>
 - The project documentation can be found <a href="https://documenter.getpostman.com/view/6005626/RznJmcEC" target="_blank">Here</a>
 
-### Implemented Endpoints
+### Implemented V1 Endpoints
 
-- [POST /meetups]
-- [GET /meetups/<int:meetupId>]
-- [GET /meetups/upcoming]
+| Endpoint       | Prefix     | Description     |
+| :------------- | :----------: | -----------: |
+| **[POST /auth/signup]**   | `/api/v1` | _signs up a user_ |
+| **[GET /auth/users]**   | `/api/v1` | _retrieves all registered users_ |
+| **[GET /auth/users/<int:userId>/]**   | `/api/v1` | _retrieves a single registered user_ |
+|  **[POST /meetups]** | `/api/v1`   | _posts a meetup_    |
+|**[GET /meetups/<int:meetupId>]**   | `/api/v1` | _retrieves a meetup_  |
+| **[GET /meetups/upcoming]**   | `/api/v1` | _gets all upcoming meetups_ |
+| **[POST /meetups/<int:meetupId>/questions]**   | `/api/v1` | _posts a meetup's question_ |
+| **[POST /meetups/<int:meetupId>/rsvps]**   | `/api/v1` | _makes an RSVP to a meetup_ |
+| **[PATCH /questions/<int:questionId>/upvote]**   | `/api/v1` | _upvotes a meetup question_ |
+| **[PATCH /questions/<int:questionId>/downvote]**   | `/api/v1` | _downvotes a meetup question_ |
 
-- [POST /meetups/<int:meetupId>/questions]
+### Implemented V2 Endpoints
 
-- [POST /meetups/<int:meetupId>/rsvps]
-
-- [PATCH /questions/<int:questionId>/upvote]
-- [PATCH /questions/<int:questionId>/downvote]
-
-- [POST /auth/signup]
-- [GET /auth/users]
-- [GET /auth/users/<int:userId>]
+| Endpoint       | Prefix     | Description     |
+| :------------- | :----------: | -----------: |
+| **[POST /auth/signup]**   | `/api/v2` | _signs up a user_ |
+| **[POST /auth/login]**   | `/api/v2` | _logs in a user_ |
+| **[GET /auth/users]**   | `/api/v2` | _retrieves registered users_ |
+| **[GET /auth/users/<int:userId>/]**   | `/api/v2` | _retrieves a single registered user_ |
+|  **[POST /meetups]** | `/api/v2`   | _posts a meetup_    |
+|  **[GET /meetups/<int:meetupId>]**  | `/api/v2` | _retrieves a meetup_  |
+|**[DELETE /meetups/<int:meetupId>]**   | `/api/v2` | _deletes a meetup_  |
+| **[GET /meetups/upcoming]**   | `/api/v2` | _Gets all upcoming meetups_ |
+| **[POST /meetups/<int:meetupId>/questions]**   | `/api/v2` | _posts a meetup's question_ |
+| **[POST /meetups/<int:meetupId>/rsvps]**   | `/api/v2` | _makes an RSVP to a meetup_ |
+| **[PATCH /questions/<int:questionId>/upvote]**   | `/api/v2` | _upvotes a meetup question_ |
+| **[PATCH /questions/<int:questionId>/downvote]**   | `/api/v2` | _downvotes a meetup question_ |
+| **[POST /meetups/<int:meetupId>/questions/<int:questionId>/comments]**   | `/api/v2` | _post a comment_ |
 
 
 ### Prerequisites
@@ -42,46 +58,30 @@ The things you need to setup the project and its relevant configuration.
 ```
 ### Installation
 
-```
-- git clone http://github.com/dennisdnyce/Questioner.git
-- cd Questioner
-- git checkout develop
-- install dependencies :~$ sudo apt install python-pip
-- install virtualenv :~$ sudo pip install virtualenv
-- create a virtual environment :~$ virtualenv myvenv
-- activate the virtual environment :~$ source myvenv/bin/activate
-- install project dependencies :~$(myenv) pip install -r requirements.txt
-- set up the project running environment :~$(myenv)export FLASK_ENV = development
-                                         :~$(myenv)export FLASK_DEBUG = 1
-                                         :~$(myenv)export FLASK_APP = run.py
-- run the project :~$(myenv)flask run  
 
--test endpoints on Postman                                        
+`step 1: git clone` http://github.com/dennisdnyce/Questioner.git
+```
+step 2: _cd Questioner_
+step 3: git checkout develop
+step 4: install dependencies :~$ sudo apt install python-pip
+step 5: install virtualenv :~$ sudo pip install virtualenv
+step 6: create a virtual environment :~$ virtualenv myvenv
+step 7: activate the virtual environment :~$ source myvenv/bin/activate
+step 8: install project dependencies :~$(myenv) pip install -r requirements.txt
+step 9: set up the project running environment from your terminal
+                           :~$(myenv)export FLASK_ENV = development
+                           :~$(myenv)export FLASK_DEBUG = 1
+                           :~$(myenv)export FLASK_APP = run.py
+step 10: run the project :~$(myenv)flask run  
+Finaly, test the endpoints on Postman                                        
 ```
 ## Running Tests
 ```
 - pytest :~$(myenv)py.test --cov app/ tests/
 
 - checking test coverage :~$(myenv)coverage report -m
+
 ```
-
-## Contributing
-> To get Started...
-
-### Step 1
-- **Option 1**
-
-      - 🍴 Fork this repo!
-
-- **Option 2**   
-
-      - 👯 Clone this repo to your local machine using `https://github.com/dennisdnyce/Questioner.git`
-
-### Step 2
-- **Hack away with one of your branches or you can use one of my many branches.**
-
-### Step 3
-- 🔃 Create a new pull request using <a href="https://github.com/dennisdnyce/Questioner/compare/" target="_blank">`https://github.com/dennisdnyce/Questioner/compare/`</a>.
 
 ## Authors
 
@@ -91,7 +91,6 @@ The things you need to setup the project and its relevant configuration.
 
 * The Almighty for the awesome gift of life
 * Andela-Nairobi Cycle-36 Cohorts
-* A Hat tip to anyone whose code was referenced
 * Endless Motivation from family and friends
 
 ## Licence

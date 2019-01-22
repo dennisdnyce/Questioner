@@ -32,7 +32,7 @@ class TestMeetRegistration(unittest.TestCase):
             'title': 'coding is fun',
             'body': 'heard of flask?'
             }
-     
+
     def test_meetup_post(self):
         ''' tests that an admin user can post a meetup '''
         response = self.client.post("/api/v2/meetups", data=json.dumps(self.meetup), content_type="application/json")
