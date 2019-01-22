@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 class RsvpRegistration():
     ''' class for RSVP model '''
     def __init__(self, response):
