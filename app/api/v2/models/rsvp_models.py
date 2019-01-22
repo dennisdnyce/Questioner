@@ -2,6 +2,7 @@ from datetime import datetime
 
 from .database import QuestionerDatabaseConnection
 
+
 class RsvpRegistration(QuestionerDatabaseConnection):
     ''' class for RSVP model '''
     def __init__(self, response=None):
