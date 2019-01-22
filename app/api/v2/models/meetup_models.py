@@ -2,6 +2,7 @@ from datetime import datetime
 
 from .database import QuestionerDatabaseConnection
 
+
 class MeetupRegistration(QuestionerDatabaseConnection):
     ''' class model for meetup registration '''
     def __init__(self, location=None, images=None, topic=None, happeningOn=None, Tags=None):
@@ -38,4 +39,4 @@ class MeetupRegistration(QuestionerDatabaseConnection):
     def delete_a_meetup(self, meetupId):
         ''' method to delete specific meetup through its id '''
         command = """delete from meetups where meetupId = %s"""
-        self.cursor.execute(command, (meetupId, ))    
+        self.cursor.execute(command, (meetupId, ))
