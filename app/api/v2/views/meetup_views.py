@@ -131,7 +131,7 @@ def downvote_a_question(questionId):
 
 @myquestionerv2.route('/meetups/<int:meetupId>/questions/<int:questionId>/comments', methods=['POST'])
 def post_question_comment(meetupId, questionId):
-    ''' method to post a comment to a question meetup '''
+    ''' method to post a comment to a meetup question '''
     meetup_post = meeting.get_a_meetup(meetupId)
     if meetup_post:
         posted_meetups = meeting.get_all_meetups()
