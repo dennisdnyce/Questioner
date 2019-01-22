@@ -67,7 +67,7 @@ class TestMeetRegistration(unittest.TestCase):
         response = self.client.post("/api/v2/meetups/1/questions/1/comments", data=json.dumps(dict(body="not an ordinary comment")), content_type="application/json")
         self.assertEqual(response.status_code, 201)
         response_msg = json.loads(response.data.decode('UTF-8'))
-        self.assertIn("Success", response_msg["Comment Message"])    
+        self.assertIn("Success", response_msg["Comment Message"])
 
 
     def tearDown(self):
